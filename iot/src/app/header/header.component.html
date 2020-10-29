@@ -1,0 +1,36 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+      <div class="navbar-header">
+          <a class="navbar-brand">IOT</a>
+      </div>
+      <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+              <!-- routerLink tako pozivamo, ili kao property binding i niz  -->
+              <!-- routherLinkActive nam samo prebacuje active klasu za onu karticu koja je kliknuta -->
+              <li routerLinkActive="active"><a routerLink="/home">Home</a></li>
+              <li routerLinkActive="active"><a routerLink="/all">All</a></li>
+              <li routerLinkActive="active"><a routerLink="/temperature">Temperature</a></li>
+              <li routerLinkActive="active"><a routerLink="/humidity">Humidity</a></li>
+              <li routerLinkActive="active"><a routerLink="/brightness">Brightness</a></li>
+              <li routerLinkActive="active"><a routerLink="/smoke">Smoke</a></li>
+
+              <!-- <li routerLinkActive="active" ><a routerLink="/auth">Authentificate</a></li> -->
+              <!-- <li routerLinkActive="active"><a routerLink="/shopping-list">Shopping List</a></li> -->
+
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li *ngIf="openWeather"><button type="button" class="btn btn-outline-secondary" style="margin-top: 8px;" (click)="onOpen()">{{inOpenWeatherMode?'Prikazi unutra':'Uporedi sa spoljnom'}}</button></li>
+            <li *ngIf="tableMode"><button type="button" class="btn btn-outline-secondary" style="margin-top: 8px;" (click)="onTable()">{{inTableMode? 'Prikazi grafik':'Prikazi tabelarno'}}</button></li>
+
+              <li class="dropdown" appDropdown >
+                  <a style="cursor:pointer;" class="dropdown-toggle">Time range
+                      <span class="caret"></span>
+                  </a>
+              <ul class="dropdown-menu">
+                  <li *ngFor="let range of timeRanges"><a style="cursor:pointer;" (click)="OnChange(range)">{{range}}</a></li>
+              </ul>
+              </li>
+          </ul>
+      </div>
+  </div>
+</nav>
